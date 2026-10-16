@@ -1,25 +1,144 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#292a35"><title>Little Life — 001B</title><style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#292a35"><title>Little Life — 001C</title><style>
 :root{font-family:system-ui,-apple-system,sans-serif;color:#292a35;background:#292a35}*{box-sizing:border-box}body{margin:0}button{font:inherit;touch-action:manipulation}button:disabled{opacity:.45}.game{max-width:520px;min-height:100dvh;margin:auto;background:#fff6e5;display:flex;flex-direction:column}.top{background:#292a35;color:#fff;padding:calc(env(safe-area-inset-top) + 14px) 18px 15px}.eyebrow{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;opacity:.7}.headline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:7px}.cash{font-size:30px;font-weight:850;color:#60e7a6}.job{text-align:right;font-size:13px}.meters{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.meter-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px}.track{height:10px;border-radius:20px;background:#555666;overflow:hidden}.fill{height:100%;transition:width .15s}.stamina{background:#ffcc63}.hunger{background:#7dd8a3}.nav{display:flex;background:#fffaf0;border-bottom:2px solid #e8d5b7}.nav button{flex:1;padding:14px;background:none;border:0;font-weight:800;color:#8b806e}.nav button.active{color:#292a35;border-bottom:4px solid #e5a94c}.screen{display:none;flex:1;flex-direction:column}.screen.active{display:flex}.room{position:relative;min-height:280px;flex:1;overflow:hidden;background:repeating-linear-gradient(90deg,#ffedc1 0,#ffedc1 42px,#fff0cb 42px,#fff0cb 84px)}.floor{position:absolute;bottom:0;width:100%;height:25%;background:repeating-linear-gradient(0deg,#c78d57 0,#c78d57 3px,#dcaa73 3px,#dcaa73 42px);border-top:8px solid #a9784f}.room-title{position:absolute;top:20px;left:20px;color:#a58250;font-weight:900;letter-spacing:1px}.bed{position:absolute;left:8%;bottom:14%;width:50%;height:135px;filter:drop-shadow(4px 8px 2px #0002);cursor:pointer;border:0;background:transparent;padding:0}.head{position:absolute;inset:0 8% 0 3%;background:#a95d30;border:8px solid #87431f;border-radius:14px}.pillow{position:absolute;left:17%;top:23%;width:60%;height:34%;background:#d7faff;border:4px solid #9ed7de;border-radius:22px}.blanket{position:absolute;left:10%;bottom:5%;width:81%;height:49%;background:#ffd06f;border:5px solid #efb958;border-radius:20px}.fridge-art{position:absolute;right:9%;bottom:20%;width:27%;height:130px;background:#d8f3f2;border:6px solid #82b8bd;border-radius:14px;box-shadow:6px 8px #0002}.fridge-art:before{content:'';position:absolute;top:42%;left:0;width:100%;border-top:4px solid #82b8bd}.fridge-art:after{content:'';position:absolute;top:16%;left:12%;height:22px;border-left:5px solid #82b8bd}.empty{position:absolute;bottom:30%;left:8%;padding:16px;border:2px dashed #a88d69;border-radius:12px;color:#8e7756;background:#fff8e3}.panel{padding:16px 18px;background:#fffaf0;border-top:2px solid #ead6b4}.panel h2{margin:0 0 10px;font-size:17px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #e9ddc8}.row:last-child{border-bottom:0}.detail{font-size:12px;color:#726b65;margin-top:3px}.btn{border:0;border-radius:11px;padding:12px 14px;background:#2bb879;color:white;font-weight:800;white-space:nowrap}.btn.alt{background:#5967a9}.btn.big{width:100%;font-size:21px;padding:21px;margin:14px 0}.work-main{padding:24px 18px;flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px;text-align:center}.work-main h1{font-size:27px;margin:0}.xpbar{height:11px;background:#e3d9c9;border-radius:20px;overflow:hidden}.xpfill{height:100%;background:#6996df;transition:width .2s}.work-stats{font-size:14px;color:#746b62}.notice{font-size:13px;color:#635a50;min-height:36px;padding:9px 18px;background:#fff0d5}.footer{display:flex;justify-content:space-between;gap:8px;padding:10px 18px calc(env(safe-area-inset-bottom) + 12px);background:#fffaf0}.small{background:#f6ebd7;border:1px solid #d9c7a7;color:#675a45;padding:9px;border-radius:9px;font-size:12px}.hidden{display:none!important}
-</style></head><body><main class="game"><header class="top"><div class="eyebrow">Little Life · Build 001B</div><div class="headline"><div><div class="cash" id="cash">£0</div><div class="eyebrow">Available cash</div></div><div class="job"><strong id="job">Cleaner</strong><div id="pay">£5 per tap</div></div></div><div class="meters"><div><div class="meter-label"><span>⚡ Stamina</span><span id="stamtext">10/10</span></div><div class="track"><div class="fill stamina" id="stambar"></div></div></div><div><div class="meter-label"><span>🍎 Hunger</span><span id="hungtext">10/10</span></div><div class="track"><div class="fill hunger" id="hungbar"></div></div></div></div></header><nav class="nav"><button id="homeTab" class="active" type="button">⌂ Home</button><button id="workTab" type="button">▣ Work</button></nav><section id="home" class="screen active"><div class="room"><div class="room-title">MY APARTMENT</div><div class="floor"></div><div class="empty" id="empty">Buy a bed to rest!</div><button class="bed hidden" id="bedArt" aria-label="Rest in bed"><span class="head"></span><span class="pillow"></span><span class="blanket"></span></button><div class="fridge-art" aria-label="Fridge"></div></div><div class="panel"><h2>Home & supplies</h2><div class="row"><div><strong id="bedTitle">Basic bed</strong><div class="detail" id="bedDetail">Buy to restore stamina</div></div><button class="btn" id="bedAction">Buy £100</button></div><div class="row"><div><strong>Fridge food</strong><div class="detail" id="foodDetail">0 portions · automatically eaten</div></div><button class="btn alt" id="foodBuy">5 portions · £20</button></div></div></section><section id="work" class="screen"><div class="work-main"><div class="eyebrow">Career progression</div><h1 id="workJob">Cleaner</h1><div class="work-stats" id="xpText">0 / 100 XP</div><div class="xpbar"><div class="xpfill" id="xpFill"></div></div><div class="work-stats" id="nextJob">Next: Assistant</div><button class="btn big" id="workButton">WORK · +£5</button><div class="work-stats">Each tap earns money and 1 XP, consuming 1 stamina and 1 hunger.</div><button class="btn alt hidden" id="promote">Promote</button></div></section><div class="notice" id="status" role="status">Welcome to Little Life.</div><div class="footer"><button class="small" id="export">Export save</button><button class="small" id="reset">Reset game</button></div></main><script>
+
+.nav{overflow-x:auto}.nav button{min-width:25%;font-size:13px;padding:13px 5px}
+.scroll{overflow:auto;padding:14px 16px;flex:1}.card{background:#fffaf0;border:1px solid #ead9c0;border-radius:15px;padding:14px;margin-bottom:12px}
+.card h2{font-size:17px;margin:0 0 10px}.muted{color:#746b62;font-size:12px}.item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #e9ddc8}
+.item:last-child{border:0}.item .btn{font-size:13px;padding:10px}.item p{margin:4px 0 0;font-size:12px;color:#766b5f}
+.pill{display:inline-block;padding:5px 9px;background:#f4e5cb;border-radius:20px;font-size:12px;font-weight:750}
+.work-main{justify-content:flex-start;padding-top:28px}.btn.big{margin:8px 0}.work-hint{font-size:13px;color:#746b62}
+.room{min-height:230px;flex:none;height:260px}.panel{border-top:0}.notice{min-height:45px}
+</style></head><body>
+<main class="game"><header class="top"><div class="eyebrow">Little Life · Build 001C</div><div class="headline"><div><div class="cash" id="cash">£150</div><div class="eyebrow">Available cash</div></div><div class="job"><strong id="job">Cleaner</strong><div id="pay">£5 per tap</div><div id="passive" class="muted"></div></div></div>
+<div class="meters"><div><div class="meter-label"><span>⚡ Stamina</span><span id="stamtext">10/10</span></div><div class="track"><div class="fill stamina" id="stambar"></div></div></div><div><div class="meter-label"><span>🍎 Hunger</span><span id="hungtext">10/10</span></div><div class="track"><div class="fill hunger" id="hungbar"></div></div></div></div></header>
+<nav class="nav"><button id="homeTab" class="active" type="button">⌂ Home</button><button id="workTab" type="button">▣ Work</button><button id="shopTab" type="button">▤ Shop</button><button id="businessTab" type="button">▥ Business</button></nav>
+<section id="home" class="screen active"><div class="room"><div class="room-title">MY APARTMENT</div><div class="floor"></div><div class="empty" id="empty">Buy a bed to rest!</div><button class="bed hidden" id="bedArt" aria-label="Rest in bed"><span class="head"></span><span class="pillow"></span><span class="blanket"></span></button><div class="fridge-art" aria-label="Fridge"></div></div><div class="panel"><h2>Home & supplies</h2><div class="row"><div><strong id="bedTitle">Basic bed</strong><div class="detail" id="bedDetail"></div></div><button class="btn" id="bedAction"></button></div><div class="row"><div><strong id="fridgeTitle">Fridge</strong><div class="detail" id="foodDetail"></div></div><button class="btn alt" id="fridgeAction"></button></div><div class="row"><div><strong>Food inventory</strong><div class="detail" id="foodInventory"></div></div><button class="btn alt" id="eatNow">Eat now</button></div></div><div class="panel"><div class="muted">Tap the bed to recover stamina. Food is automatically eaten when you're too hungry to work.</div></div></section>
+<section id="work" class="screen"><div class="work-main"><div class="eyebrow">Career progression</div><h1 id="workJob">Cleaner</h1><div class="work-stats" id="xpText"></div><div class="xpbar"><div class="xpfill" id="xpFill"></div></div><div class="work-stats" id="nextJob"></div><button class="btn big" id="workButton">WORK</button><div class="work-hint" id="workCosts"></div><button class="btn alt hidden" id="promote">Promote</button></div><div class="panel"><h2>Training</h2><div class="row"><div><strong>💪 Stamina training</strong><div class="detail" id="stamUpgradeInfo"></div></div><button class="btn alt" id="stamUpgrade"></button></div><div class="row"><div><strong>🍽️ Appetite training</strong><div class="detail" id="hungUpgradeInfo"></div></div><button class="btn alt" id="hungUpgrade"></button></div><div class="row"><div><strong>🧠 Intelligence</strong><div class="detail" id="intInfo"></div></div><button class="btn alt" id="intUpgrade"></button></div></div></section>
+<section id="shop" class="screen"><div class="scroll"><div class="card"><h2>Food shop</h2><div class="muted">Buy individual meals. Fridge storage is limited. Meals are eaten automatically when needed.</div><div id="foods"></div></div><div class="card"><h2>Home improvements</h2><div class="muted">Upgrade your fridge in Home to store more meals, or your bed to recover more stamina.</div></div></div></section>
+<section id="business" class="screen"><div class="scroll"><div class="card"><h2>🍋 Lemon Cart</h2><div id="bizInfo" class="muted"></div><div id="bizControls"></div></div><div class="card"><h2>Business model</h2><div class="muted">Earns cash while you're away (up to 8 hours). Upgrade earnings or expand locations. No adverts, premium currency or compulsory waiting.</div></div></div></section>
+<div class="notice" id="status" role="status">Welcome to Little Life.</div><div class="footer"><button class="small" id="export">Export save</button><button class="small" id="reset">Reset game</button></div></main>
+<script>
 (()=>{'use strict';
-const OLD_KEY='little-life-001a-v1',KEY='little-life-001b-v1';
-const JOBS=[{name:'Cleaner',pay:5,xp:0},{name:'Assistant',pay:12,xp:100},{name:'Supervisor',pay:28,xp:300},{name:'Manager',pay:60,xp:700},{name:'Director',pay:125,xp:1500}];
+const KEY='little-life-001c-v1',PREV='little-life-001b-v1',FIRST='little-life-001a-v1';
+const JOBS=[
+{name:'Cleaner',pay:5,gain:1,st:1,hu:1,xp:0,int:0},
+{name:'Assistant',pay:15,gain:3,st:2,hu:2,xp:60,int:0},
+{name:'Supervisor',pay:40,gain:7,st:3,hu:3,xp:220,int:0},
+{name:'Manager',pay:110,gain:15,st:4,hu:4,xp:650,int:1},
+{name:'Director',pay:280,gain:30,st:5,hu:5,xp:1500,int:2}];
 const BEDS=[{name:'Basic bed',restore:2,price:100},{name:'Comfortable bed',restore:5,price:300},{name:'Luxury bed',restore:10,price:900}];
-const $=id=>document.getElementById(id),fresh=()=>({version:2,cash:150,hasBed:false,bedLevel:0,stamina:10,hunger:10,food:0,xp:0,jobLevel:0});
-function load(){try{let v=JSON.parse(localStorage.getItem(KEY));if(v&&v.version===2&&Number.isSafeInteger(v.cash)&&v.cash>=0&&typeof v.hasBed==='boolean'&&Number.isInteger(v.bedLevel)&&v.bedLevel>=0&&v.bedLevel<3&&[v.stamina,v.hunger,v.food,v.xp,v.jobLevel].every(n=>Number.isSafeInteger(n)&&n>=0)&&v.stamina<=10&&v.hunger<=10&&v.jobLevel<5)return v;let old=JSON.parse(localStorage.getItem(OLD_KEY));if(old&&old.version===1&&Number.isSafeInteger(old.cash)&&old.cash>=0&&typeof old.hasBed==='boolean'){let s=fresh();s.cash=old.cash;s.hasBed=old.hasBed;return s;}}catch(e){}return fresh();}
-let s=load(),saveOK=true;function save(){try{localStorage.setItem(KEY,JSON.stringify(s));saveOK=true;}catch(e){saveOK=false;}}function note(t){$('status').textContent=t;}
-function render(){const j=JOBS[s.jobLevel];$('cash').textContent='£'+s.cash.toLocaleString('en-GB');$('job').textContent=j.name;$('pay').textContent='£'+j.pay+' per tap';$('stamtext').textContent=s.stamina+'/10';$('hungtext').textContent=s.hunger+'/10';$('stambar').style.width=(s.stamina*10)+'%';$('hungbar').style.width=(s.hunger*10)+'%';$('empty').classList.toggle('hidden',s.hasBed);$('bedArt').classList.toggle('hidden',!s.hasBed);$('bedTitle').textContent=s.hasBed?BEDS[s.bedLevel].name:'Basic bed';$('bedDetail').textContent=s.hasBed?'Rest +'+BEDS[s.bedLevel].restore+' stamina per tap':'Buy to restore stamina';let next=s.hasBed&&s.bedLevel<2?BEDS[s.bedLevel+1]:null;$('bedAction').textContent=!s.hasBed?'Buy £100':next?'Upgrade £'+next.price:'Rest +'+BEDS[s.bedLevel].restore;$('bedAction').disabled=(!s.hasBed&&s.cash<100)||(next&&s.cash<next.price);$('foodDetail').textContent=s.food+' portions · auto-eat at hunger ≤ 5';$('foodBuy').disabled=s.cash<20;$('workJob').textContent=j.name;let nxt=JOBS[s.jobLevel+1];$('xpText').textContent=nxt?s.xp+' / '+nxt.xp+' XP':s.xp+' XP · max career';$('xpFill').style.width=nxt?Math.max(0,Math.min(100,100*(s.xp-j.xp)/(nxt.xp-j.xp)))+'%':'100%';$('nextJob').textContent=nxt?'Next: '+nxt.name+' (£'+nxt.pay+'/tap)':'Top career level reached';$('workButton').textContent='WORK · +£'+j.pay;$('workButton').disabled=s.stamina<1||(s.hunger<1&&s.food===0);$('promote').classList.toggle('hidden',!(nxt&&s.xp>=nxt.xp));$('promote').textContent=nxt?'Promote to '+nxt.name:'';if(!saveOK)note('Warning: storage is unavailable. Your progress may not save.');}
-function update(){save();render();}
-function tab(name){for(const n of ['home','work']){$(n).classList.toggle('active',n===name);$(n+'Tab').classList.toggle('active',n===name);}}$('homeTab').onclick=()=>tab('home');$('workTab').onclick=()=>tab('work');
-function work(){if(s.stamina<1){note('Out of stamina. Go Home and rest in bed.');return;}if(s.hunger<1){if(s.food>0){s.food--;s.hunger=Math.min(10,s.hunger+5);}else{note('Too hungry! Buy food in the Home tab.');return;}}s.cash+=JOBS[s.jobLevel].pay;s.xp++;s.stamina--;s.hunger--;if(s.hunger<=5&&s.food>0){s.food--;s.hunger=Math.min(10,s.hunger+5);note('Worked and automatically ate 1 food portion.');}else note('Work completed: +£'+JOBS[s.jobLevel].pay+' and +1 XP.');update();}
-$('workButton').onclick=work;
-function rest(){if(!s.hasBed){if(s.cash<100)return;s.cash-=100;s.hasBed=true;note('Basic bed purchased. Tap the bed to rest.');update();return;}if(s.bedLevel<2){const next=BEDS[s.bedLevel+1];if(s.cash<next.price)return;s.cash-=next.price;s.bedLevel++;note('Bed upgraded! Rest now restores '+BEDS[s.bedLevel].restore+' stamina.');update();return;}restNow();}
-function restNow(){if(!s.hasBed)return;const gained=Math.min(10-s.stamina,BEDS[s.bedLevel].restore);s.stamina+=gained;note(gained?'Rested: +'+gained+' stamina.':'Stamina is already full.');update();}
-$('bedAction').onclick=rest;$('bedArt').onclick=restNow;
-$('foodBuy').onclick=()=>{if(s.cash<20)return;s.cash-=20;s.food+=5;note('Bought 5 food portions for £20.');update();};
-$('promote').onclick=()=>{let next=JOBS[s.jobLevel+1];if(!next||s.xp<next.xp)return;s.jobLevel++;note('Promoted to '+next.name+'! Each tap now earns £'+next.pay+'.');update();};
-$('reset').onclick=()=>{if(!confirm('Reset Little Life progress? This cannot be undone.'))return;s=fresh();note('New game started.');update();};
-$('export').onclick=()=>{const blob=new Blob([JSON.stringify(s,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='little-life-001b-save.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);};
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')save();});window.addEventListener('pagehide',save);save();render();
+const FOODS=[
+{name:'Bread',cost:8,restore:10,unlock:0,icon:'🍞'},
+{name:'Potato',cost:18,restore:20,unlock:0,icon:'🥔'},
+{name:'Ramen',cost:38,restore:35,unlock:1,icon:'🍜'},
+{name:'Sandwich',cost:70,restore:50,unlock:2,icon:'🥪'},
+{name:'Pasta',cost:130,restore:75,unlock:3,icon:'🍝'},
+{name:'Feast',cost:230,restore:100,unlock:4,icon:'🍲'}];
+const $=id=>document.getElementById(id);
+const fresh=()=>({version:3,cash:150,hasBed:false,bedLevel:0,stamina:10,hunger:10,maxStamina:10,maxHunger:10,stamTraining:0,hungTraining:0,fridgeLevel:0,foods:[],xp:0,jobLevel:0,intelligence:0,business:{owned:false,level:1,locations:1},businessCredit:0,lastSeen:Date.now()});
+function safeInt(n,min=0,max=1e12){return Number.isSafeInteger(n)&&n>=min&&n<=max;}
+function migrate(v){
+let s=fresh();if(!v||typeof v!=='object')return s;
+if(safeInt(v.cash))s.cash=v.cash;
+s.hasBed=v.hasBed===true;
+if(safeInt(v.bedLevel,0,2))s.bedLevel=v.bedLevel;
+if(safeInt(v.xp))s.xp=v.xp;
+if(safeInt(v.jobLevel,0,4))s.jobLevel=v.jobLevel;
+if(safeInt(v.stamTraining,0,20))s.stamTraining=v.stamTraining;
+if(safeInt(v.hungTraining,0,20))s.hungTraining=v.hungTraining;
+s.maxStamina=10+s.stamTraining*5;s.maxHunger=10+s.hungTraining*10;
+if(safeInt(v.stamina,0,s.maxStamina))s.stamina=v.stamina;
+if(safeInt(v.hunger,0,s.maxHunger))s.hunger=v.hunger;
+if(safeInt(v.fridgeLevel,0,12))s.fridgeLevel=v.fridgeLevel;
+if(safeInt(v.intelligence,0,20))s.intelligence=v.intelligence;
+if(Array.isArray(v.foods))s.foods=v.foods.filter(x=>safeInt(x,0,FOODS.length-1)).slice(0,5+s.fridgeLevel*5);
+else if(safeInt(v.food))s.foods=Array(Math.min(v.food,5)).fill(0);
+if(v.business&&typeof v.business==='object'){
+s.business.owned=v.business.owned===true;
+if(safeInt(v.business.level,1,100))s.business.level=v.business.level;
+if(safeInt(v.business.locations,1,20))s.business.locations=v.business.locations;
+}
+if(typeof v.businessCredit==='number'&&v.businessCredit>=0&&v.businessCredit<1)s.businessCredit=v.businessCredit;
+if(safeInt(v.lastSeen,0,Date.now()+60000))s.lastSeen=v.lastSeen;
+return s;
+}
+function load(){for(const key of [KEY,PREV,FIRST]){try{const v=JSON.parse(localStorage.getItem(key));if(v&&typeof v==='object'&&safeInt(v.cash)&&v.version>=1&&v.version<=3)return migrate(v);}catch(e){}}return fresh();}
+let s=load(),saveOK=true,notice='';
+function rate(){return s.business.owned?s.business.level*s.business.locations*0.25:0;}
+function settle(){const now=Date.now(),elapsed=Math.max(0,Math.min(now-s.lastSeen,8*3600*1000));if(elapsed>=1000&&s.business.owned){const total=s.businessCredit+elapsed/1000*rate(),gain=Math.floor(total);s.businessCredit=total-gain;s.cash=Math.min(1e12,s.cash+gain);}s.lastSeen=now;}
+settle();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(s));saveOK=true;}catch(e){saveOK=false;}}
+function note(t){notice=t;$('status').textContent=t;}
+function spend(n){if(s.cash<n){note('Not enough money yet.');return false;}s.cash-=n;return true;}
+function foodCap(){return 5+s.fridgeLevel*5;}
+function autoEat(need){if(s.hunger>=need)return true;while(s.hunger<need&&s.foods.length){let index=s.foods.shift();s.hunger=Math.min(s.maxHunger,s.hunger+FOODS[index].restore);}return s.hunger>=need;}
+function update(){s.lastSeen=Date.now();save();render();}
+function costTraining(n){return Math.round(90*Math.pow(1.85,n));}
+function fridgeCost(){return Math.round(160*Math.pow(2.3,s.fridgeLevel));}
+function intCost(){return Math.round(250*Math.pow(3,s.intelligence));}
+function bizLevelCost(){return Math.round(220*Math.pow(1.55,s.business.level-1));}
+function bizLocCost(){return Math.round(900*Math.pow(2.2,s.business.locations-1));}
+function render(){
+const j=JOBS[s.jobLevel],next=JOBS[s.jobLevel+1];
+$('cash').textContent='£'+Math.floor(s.cash).toLocaleString('en-GB');
+$('job').textContent=j.name;$('pay').textContent='£'+j.pay+' per tap';
+$('passive').textContent=s.business.owned?'+£'+rate().toFixed(2)+'/sec passive':'';
+$('stamtext').textContent=s.stamina+'/'+s.maxStamina;$('hungtext').textContent=s.hunger+'/'+s.maxHunger;
+$('stambar').style.width=(100*s.stamina/s.maxStamina)+'%';$('hungbar').style.width=(100*s.hunger/s.maxHunger)+'%';
+$('empty').classList.toggle('hidden',s.hasBed);$('bedArt').classList.toggle('hidden',!s.hasBed);
+$('bedTitle').textContent=s.hasBed?BEDS[s.bedLevel].name:'Basic bed';
+$('bedDetail').textContent=s.hasBed?'Tap bed to restore +'+BEDS[s.bedLevel].restore+' stamina':'Restores stamina once purchased';
+const bnext=s.hasBed&&s.bedLevel<2?BEDS[s.bedLevel+1]:null;
+$('bedAction').textContent=!s.hasBed?'Buy £100':bnext?'Upgrade £'+bnext.price:'Rest +10';
+$('bedAction').disabled=(!s.hasBed&&s.cash<100)||(bnext&&s.cash<bnext.price);
+$('fridgeTitle').textContent='Fridge · Level '+(s.fridgeLevel+1);
+$('foodDetail').textContent=s.foods.length+'/'+foodCap()+' food slots used';
+$('fridgeAction').textContent='Expand £'+fridgeCost();$('fridgeAction').disabled=s.cash<fridgeCost()||s.fridgeLevel>=12;
+$('foodInventory').textContent=s.foods.length?s.foods.map(i=>FOODS[i].icon).join(' '):'Empty · visit Shop';
+$('eatNow').disabled=!s.foods.length||s.hunger>=s.maxHunger;
+$('workJob').textContent=j.name;
+$('xpText').textContent=next?s.xp+' / '+next.xp+' XP':s.xp+' XP · top job';
+$('xpFill').style.width=next?Math.max(0,Math.min(100,100*(s.xp-j.xp)/(next.xp-j.xp)))+'%':'100%';
+$('nextJob').textContent=next?'Next: '+next.name+(next.int?' · needs '+next.int+' Intelligence':''):'Career complete';
+$('workButton').textContent='WORK · +£'+j.pay+' / +'+j.gain+' XP';
+$('workCosts').textContent='Costs '+j.st+' stamina and '+j.hu+' hunger per tap';
+$('workButton').disabled=s.stamina<j.st||(s.hunger<j.hu&&!s.foods.length);
+$('promote').classList.toggle('hidden',!(next&&s.xp>=next.xp));
+$('promote').textContent=next?'Promote to '+next.name+(s.intelligence<next.int?' (need '+next.int+' INT)':''):'';
+$('promote').disabled=!!next&&s.intelligence<next.int;
+$('stamUpgradeInfo').textContent='Maximum '+s.maxStamina+' · +5 each upgrade';
+$('hungUpgradeInfo').textContent='Maximum '+s.maxHunger+' · +10 each upgrade';
+$('stamUpgrade').textContent='Train £'+costTraining(s.stamTraining);
+$('hungUpgrade').textContent='Train £'+costTraining(s.hungTraining);
+$('stamUpgrade').disabled=s.cash<costTraining(s.stamTraining)||s.stamTraining>=20;
+$('hungUpgrade').disabled=s.cash<costTraining(s.hungTraining)||s.hungTraining>=20;
+$('intInfo').textContent='Level '+s.intelligence+' · required for senior promotions';
+$('intUpgrade').textContent='Study £'+intCost();$('intUpgrade').disabled=s.cash<intCost()||s.intelligence>=20;
+$('foods').innerHTML=FOODS.map((f,i)=>'<div class="item"><div><strong>'+f.icon+' '+f.name+'</strong><p>+'+f.restore+' hunger · '+(i<=s.jobLevel?'Available':'Unlock at '+JOBS[f.unlock].name)+'</p></div><button class="btn" data-food="'+i+'" '+(i>s.jobLevel||s.cash<f.cost||s.foods.length>=foodCap()?'disabled':'')+'>£'+f.cost+'</button></div>').join('');
+$('bizInfo').textContent=s.business.owned?'Level '+s.business.level+' · '+s.business.locations+' location(s) · £'+rate().toFixed(2)+'/sec · £'+(rate()*60).toFixed(0)+'/min':'Start a small passive-income business.';
+$('bizControls').innerHTML=s.business.owned?
+'<div class="item"><div><strong>Upgrade cart</strong><p>Increase income per location</p></div><button class="btn" id="bizUp" '+(s.cash<bizLevelCost()?'disabled':'')+'>£'+bizLevelCost()+'</button></div><div class="item"><div><strong>Open another location</strong><p>Multiply total earnings</p></div><button class="btn" id="bizExpand" '+(s.cash<bizLocCost()||s.business.locations>=20?'disabled':'')+'>£'+bizLocCost()+'</button></div>':
+'<div class="item"><div><strong>Start Lemon Cart</strong><p>Earn £0.25/sec, including offline</p></div><button class="btn" id="bizStart" '+(s.cash<250?'disabled':'')+'>£250</button></div>';
+if(!saveOK)note('Storage unavailable. Progress might not save.');
+}
+function tab(name){for(const n of ['home','work','shop','business']){$(n).classList.toggle('active',n===name);$(n+'Tab').classList.toggle('active',n===name);}}
+for(const n of ['home','work','shop','business'])$(n+'Tab').onclick=()=>tab(n);
+function restNow(){if(!s.hasBed)return;const gained=Math.min(s.maxStamina-s.stamina,BEDS[s.bedLevel].restore);s.stamina+=gained;note(gained?'Rested: +'+gained+' stamina.':'Stamina full.');update();}
+$('bedArt').onclick=restNow;
+$('bedAction').onclick=()=>{if(!s.hasBed){if(!spend(100))return;s.hasBed=true;note('Basic bed purchased. Tap it to rest.');}else if(s.bedLevel<2){const b=BEDS[s.bedLevel+1];if(!spend(b.price))return;s.bedLevel++;note('Bed upgraded!');}else return restNow();update();};
+$('fridgeAction').onclick=()=>{if(s.fridgeLevel>=12||!spend(fridgeCost()))return;s.fridgeLevel++;note('Fridge expanded to '+foodCap()+' slots.');update();};
+$('eatNow').onclick=()=>{if(!s.foods.length||s.hunger>=s.maxHunger)return;const i=s.foods.shift();s.hunger=Math.min(s.maxHunger,s.hunger+FOODS[i].restore);note('Ate '+FOODS[i].name+'.');update();};
+$('workButton').onclick=()=>{const j=JOBS[s.jobLevel];if(s.stamina<j.st){note('Too tired. Rest in bed.');return;}if(!autoEat(j.hu)){note('Too hungry. Buy food in Shop.');update();return;}s.stamina-=j.st;s.hunger-=j.hu;s.cash+=j.pay;s.xp+=j.gain;note('Worked: +£'+j.pay+' and +'+j.gain+' XP.');update();};
+$('promote').onclick=()=>{const n=JOBS[s.jobLevel+1];if(!n||s.xp<n.xp||s.intelligence<n.int)return;s.jobLevel++;note('Promoted to '+n.name+'!');update();};
+$('stamUpgrade').onclick=()=>{if(s.stamTraining>=20||!spend(costTraining(s.stamTraining)))return;s.stamTraining++;s.maxStamina+=5;s.stamina+=5;note('Stamina capacity increased!');update();};
+$('hungUpgrade').onclick=()=>{if(s.hungTraining>=20||!spend(costTraining(s.hungTraining)))return;s.hungTraining++;s.maxHunger+=10;s.hunger+=10;note('Hunger capacity increased!');update();};
+$('intUpgrade').onclick=()=>{if(s.intelligence>=20||!spend(intCost()))return;s.intelligence++;note('Intelligence increased to '+s.intelligence+'.');update();};
+$('foods').onclick=e=>{const btn=e.target.closest('[data-food]');if(!btn)return;const i=Number(btn.dataset.food),f=FOODS[i];if(!f||i>s.jobLevel||s.foods.length>=foodCap()||!spend(f.cost))return;s.foods.push(i);note('Bought '+f.name+'.');update();};
+$('bizControls').onclick=e=>{const id=e.target.id;if(id==='bizStart'&&!s.business.owned){if(!spend(250))return;s.business.owned=true;note('Lemon Cart opened!');}else if(id==='bizUp'&&s.business.owned){if(!spend(bizLevelCost()))return;s.business.level++;note('Lemon Cart upgraded.');}else if(id==='bizExpand'&&s.business.owned&&s.business.locations<20){if(!spend(bizLocCost()))return;s.business.locations++;note('New location opened!');}else return;update();};
+$('reset').onclick=()=>{if(!confirm('Reset all Little Life progress? This cannot be undone.'))return;s=fresh();note('New game started.');update();};
+$('export').onclick=()=>{settle();save();const blob=new Blob([JSON.stringify(s,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='little-life-001c-save.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);};
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){settle();save();}else{settle();update();}});window.addEventListener('pagehide',()=>{settle();save();});
+setInterval(()=>{settle();update();},3000);
+save();render();
 })();
 </script></body></html>
